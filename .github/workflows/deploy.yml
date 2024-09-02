@@ -33,6 +33,8 @@ jobs:
         #   ref: docs # 这一步检查 docs 代码
 
       - uses: pnpm/action-setup@v3 # 如果使用 pnpm，请取消注释
+        with:
+          version: 9
 
       - name: Setup Node
         uses: actions/setup-node@v4
