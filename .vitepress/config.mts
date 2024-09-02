@@ -1,29 +1,49 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig } from 'vitepress';
+import publicity from './sidebar/publicity.mts';
+import xmyy from './sidebar/xmyy.mts';
 
-// https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "My Awesome Project",
-  description: "A VitePress Site",
+  title: '香漫雅园 社区发布',
+  description: '香漫雅园业委会筹备组',
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: '🏠香漫雅园', link: '/xmyy/', activeMatch: '^/xmyy/' },
+      { text: '🎬物业服务公示', link: '/publicity/', activeMatch: '^/publicity/' },
     ],
 
-    sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' },
-          { text: '服务联系卡', link: '/contact.md' }
-        ]
-      }
-    ],
+    sidebar: {
+      '/xmyy/': xmyy,
+      '/publicity/': publicity,
+    },
 
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
-  }
-})
+    socialLinks: [{ icon: 'linkedin', link: 'https://www.istr.cn' }],
+    search: {
+      provider: 'local',
+    },
+    outline: {
+      level: [2, 4],
+    },
+    lastUpdated: {
+      text: '最后一次更新于',
+      formatOptions: {
+        dateStyle: 'full',
+        timeStyle: 'medium',
+      },
+    },
+    returnToTopLabel: '返回顶部',
+    footer: {
+      message: '香漫雅园 社区发布',
+      copyright: 'Copyright © 2019-present 香漫雅园业委会筹备组',
+    },
+  },
+  lastUpdated: true,
+  markdown: {
+    lineNumbers: true,
+    image: {
+      lazyLoading: true,
+    },
+  },
+  sitemap: {
+    hostname: 'http://xmyy.istr.cn',
+  },
+});
